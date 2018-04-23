@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wzf.dao.RolePermissionDao">
+<resultMap id="RolePermission" type="com.wzf.pojo.RolePermission">
+
+</resultMap>
+
+<select id="findByRoleIdIn" resultMap="RolePermission">
+    select * from RolePermission where roleId IN
+    <foreach collection="list" item="roleId" open="(" close=")" separator=",">
+        #{roleId}
+    </foreach>
+</select>
+</mapper>

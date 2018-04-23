@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wzf.dao.UsersRoleDao">
+    <resultMap id="UsersRole" type="com.wzf.pojo.UserRole">
+
+    </resultMap>
+
+    <select id="findByUserIdIn" resultMap="UsersRole">
+      select * from UsersRole where userId IN
+      <foreach collection="list" item="userId" open="(" close=")" separator=",">
+          #{userId}
+      </foreach>
+    </select>
+
+    <select id="findByUserId" resultMap="UsersRole">
+        select * from UsersRole where userId = #{userId}
+    </select>
+</mapper>
